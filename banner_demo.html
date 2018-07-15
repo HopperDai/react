@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .slider {
+            width: 400px;
+            height: 300px;
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider ul {
+            width: 1600px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: .7s all ease;
+            overflow: hidden;
+        }
+
+        .slider ul li {
+            float: left;
+            width: 400px;
+            height: 300px;
+        }
+
+        .slider ol {
+            width: 104px;
+            height: 26px;
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+        }
+
+        .slider ol li {
+            width: 16px;
+            height: 16px;
+            float: left;
+            margin: 5px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        .slider ol li.active {
+            background: rgba(255, 255, 255, 1);
+        }
+    </style>
+
+    <script src="./libs/browser.js"></script>
+    <script src="./libs/react.development.js"></script>
+    <script src="./libs/react-dom.development.js"></script>
+
+    <script type="text/babel">
+        class Banner extends React.Component {
+            constructor(...args) {
+                super(...args);
+
+                this.state = {
+                    now: 0
+                }
+            }
+
+            fn(index) {
+                this.setState({
+                    now: index
+                });
+            }
+
+            render() {
+                let arrLi = this.props.list.map((str,index)=>{
+                    return <li key={index}>
+                        <img src={str}></img>
+                    </li>
+                });
+
+                let arrOli = this.props.list.map((str,index)=>{
+                    return <li className={this.state.now==index?'active':''} onMouseOver={this.fn.bind(this,index)} key={index}></li>
+                })
+
+                return <div className='slider'>
+                    <ul style={{left: -400*this.state.now+'px'}}>
+                        {arrLi}
+                    </ul>
+                    <ol>
+                        {arrOli}
+                    </ol>
+                </div>
+            }
+        }
+
+        window.onload = function() {
+            let oBox = document.getElementById('box');
+
+            ReactDOM.render(
+                <Banner 
+                list = {[
+                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531674002389&di=6dc30735b7bd329e2112972cc3157c87&imgtype=0&src=http%3A%2F%2Fimages.ali213.net%2Fpicfile%2Fpic%2F2013%2F03%2F19%2F927_gqxr%2520%25281%2529.jpg',
+                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531674002388&di=3856deb09df7f920ee50db1bbe59d890&imgtype=0&src=http%3A%2F%2Fpic1.16pic.com%2F00%2F12%2F94%2F16pic_1294464_b.jpg',
+                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531674002382&di=7c4de90c78db40da9c56d1964ec3ec95&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fc75c10385343fbf2618015f7ba7eca8064388fb2.jpg',
+                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531674002381&di=471cfbd2730e88ab639bbfbc191b1465&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F242dd42a2834349b5382a197c3ea15ce36d3be18.jpg'
+                ]}
+                ></Banner>,
+                oBox
+            )
+         }
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
