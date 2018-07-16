@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="./libs/browser.js"></script>
+    <script src="./libs/react.development.js"></script>
+    <script src="./libs/react-dom.development.js"></script>
+
+    <script type="text/babel">
+        // 原理：通过全局变量来实现两个无关组件间的通信 -> window
+
+        class Cmp1 extends React.Component {
+            constructor(...args) {
+                super(...args);
+
+                this.state = {a: 0}
+                // 全局方法
+                window.communication = ()=> {
+                    this.setState({
+                        a: this.state.a + 1
+                    });
+                }
+            }
+
+            render() {
+                return <div>
+                    组件1：{this.state.a}
+                </div>
+            }
+        }
+
+        class Cmp2 extends React.Component {
+            constructor(...args) {
+                super(...args);
+            }
+
+            fn() {
+                window.communication();
+            }
+
+            render() {
+                return <div>
+                    组件2：<input type='button' value='和组件1通信' onClick={this.fn.bind(this)} />
+                </div>
+            }
+        }
+
+        window.onload = ()=>{
+            let oBox = document.getElementById('box');
+
+            ReactDOM.render(
+                <div>
+                    <Cmp1></Cmp1>
+                    <Cmp2></Cmp2>                
+                </div>,
+                oBox
+            )
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>

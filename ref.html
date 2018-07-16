@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="./libs/browser.js"></script>
+    <script src="./libs/react.development.js"></script>
+    <script src="./libs/react-dom.development.js"></script>
+
+    <script type="text/babel">
+        class Test extends React.Component {
+            constructor(...args) {
+                super(...args);
+
+                this.state = {a: 0, b: 0}
+            }
+
+            sum() {
+                // ref 能在组件内部找到东西
+                this.setState({
+                    a: parseInt(this.refs['txt1'].value),
+                    b: parseInt(this.refs['txt2'].value)
+                })
+            }
+
+            render() {
+                return  <div>
+                    <input type='text' ref='txt1'/>
+                    <input type='text' ref='txt2'/>
+                    <input type='button' onClick={this.sum.bind(this)} value='相加'/>
+                    {this.state.a + this.state.b}
+                </div>
+            }
+        }
+
+        window.onload = ()=> {
+            let oBox = document.getElementById('box');
+
+            ReactDOM.render(
+                <Test></Test>,
+                oBox
+            )
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>

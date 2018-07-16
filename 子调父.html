@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="./libs/browser.js"></script>
+    <script src="./libs/react.development.js"></script>
+    <script src="./libs/react-dom.development.js"></script>
+
+    <script type="text/babel">
+        /*  子级调用父级的方法 
+        实现原理：
+        1. 父级可以给子级传参
+        2. 父级把自己作为参数传给子级
+        */
+
+        // 子组件
+        class User extends React.Component {
+            constructor(...args) {
+                super(...args);
+            }
+
+            fn() {
+                this.props.parent.delete(this.props.data.ID);
+            }
+
+            render() {
+                return <li>
+                    <div>id：{this.props.data.ID}</div>
+                    <div>用户名：{this.props.data.username}</div>
+                    <div>密码：{this.props.data.password}</div>
+                    <div>操作：<a href='javascript:;' onClick={this.fn.bind(this)}>删除</a></div>
+                </li>
+            }
+        }
+
+        // 父组件
+        class UserList extends React.Component {
+            constructor(...args) {
+                super(...args);
+
+                this.state = {users: this.props.userList};
+            }
+
+            delete(id) {
+                this.setState({
+                    users: this.state.users.filter(json=> json.ID!=id)
+                });
+            }
+            
+            render() {
+                let userList = this.state.users.map(json=> {
+                    return <User data={json} key={json.ID} parent={this}></User>
+                });
+                return <div>
+                    {userList}
+                </div> 
+            }
+        }
+
+        window.onload = ()=> {
+            let oBox = document.getElementById('box');
+
+            ReactDOM.render(
+                <UserList userList={[
+                    {ID: 1, username: 'hopper', password: '123456'},
+                    {ID: 2, username: 'hopper1', password: '1234561'},
+                    {ID: 3, username: 'hoppe2', password: '1234562'}
+                ]}></UserList>,
+                oBox
+            )
+         }
+    </script>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
