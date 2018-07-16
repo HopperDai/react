@@ -1,0 +1,88 @@
+vue   -> vue-cli
+ng    -> ng-cli
+react -> create-react-app
+  模块化
+  npm i -g create-react-app
+
+--------------------------------------------------------------------------------
+
+class Xxxx extends React.Component{
+
+
+  render(){
+    return <div>
+      xxx
+    </div>;
+  }
+}
+
+--------------------------------------------------------------------------------
+
+npm start
+npm build
+
+静态文件：
+vue   static/
+ng    assets/
+react public/
+
+--------------------------------------------------------------------------------
+
+源码：
+public/
+  index.html      入口HTML
+src/
+  index.js        入口JS
+  App.js          主模块
+
+--------------------------------------------------------------------------------
+
+vue               axios
+ng                @angular/http
+react             fetch
+
+--------------------------------------------------------------------------------
+
+BrowserRouter   最外面，声明一个路由块——包裹
+Switch          选择声明
+Route           路由声明——注册一个路由项
+
+--------------------------------------------------------------------------------
+
+vue-cli
+  vue create xxx 模板
+
+  组件：
+  <template>html</template>
+  <script></script>
+  <style></style>
+
+  axios
+
+  vuex
+
+ng-cli
+  ng init xxx
+
+  组件：
+  xxx.component.html
+  xxx.component.ts
+  xxx.component.css
+
+  @angular/http
+
+react-create-app
+  react-create-app xxx
+
+  组件：
+  import './assets/1.css'
+
+  class xxx extends Component{
+    js...
+
+    render(){
+      <html>
+    }
+  }
+
+  fetch

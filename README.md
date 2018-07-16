@@ -138,4 +138,26 @@
 
 ## 组件间通信
 
-## redux: 大型，组件间状态管理、通信
+## redux: 组件间状态管理、通信 -> 适合大型应用，app
+
+## create-react-app
+
+- 安装：`npm i -g create-react-app`
+
+- 创建工程：`create-react-app 工程名`
+
+- `npm start`
+
+- `npm build`
+
+### create-react-app 工程目录
+
+- public 放置静态文件
+
+  - index.html 入口 HTML
+
+- src 源码
+
+  - index.js 入口 js
+
+  - App.js 主模块
