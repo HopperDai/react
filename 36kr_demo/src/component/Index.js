@@ -1,0 +1,48 @@
+import React, { Component } from 'react';
+
+import Banner from './IndexComponent/banner';
+import EditorRecommend from './IndexComponent/editor_recommend';
+import ArticleList from './IndexComponent/article_list';
+
+class Index extends Component {
+    // 没有 constructor ，就无法对状态进行正确的初始化
+    constructor(...args) {
+        super(...args);
+    }
+
+    render() {
+        return (
+            <div className="index_36kr">aaa
+                <div className="pagewrap">
+                <div className="mainlib_flex_wapper">
+                    <div className="ab-index-exp mainlib">
+                    <div className="center_content">
+                        <div className="content-wrapper">
+                        <Banner></Banner>
+                        <EditorRecommend></EditorRecommend>
+                        <ArticleList></ArticleList>
+                        </div>
+                    </div>
+                    </div>
+                    <div className="rightlib cover_css">
+                    <div className="plan-image plan-lazyload-box">
+                    </div>
+                    <div className="index-right-second">
+                        <div className="plan-image plan-lazyload-box">
+                        </div>
+                    </div>
+                    {/* <RealTime></RealTime> */}
+                    <div className="plan-image plan-lazyload-box"></div>
+                    <div className="plan-image plan-lazyload-box"></div>
+                    {/* <HotArticle></HotArticle> */}
+                    <div className="plan-image plan-lazyload-box"></div>
+                    {/* <BiggieWord></BiggieWord> */}
+                    </div>
+                </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default Index;

@@ -161,3 +161,23 @@
   - index.js 入口 js
 
   - App.js 主模块
+
+### 组件模版
+
+```javascript
+import React, {
+    Component
+} from 'react'
+
+class Index extends Component {
+    constructor(...args) {
+        super(...args);
+    }
+
+    render() {
+        return ();
+    }
+}
+
+export default Index;
+```
