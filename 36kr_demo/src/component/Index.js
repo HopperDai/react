@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import Banner from './IndexComponent/banner';
 import EditorRecommend from './IndexComponent/editor_recommend';
 import ArticleList from './IndexComponent/article_list';
+import RealTime from './IndexComponent/real_time';
+import HotArticle from './IndexComponent/hot_article';
+import BiggieWord from './IndexComponent/big_word';
 
 class Index extends Component {
     // 没有 constructor ，就无法对状态进行正确的初始化
@@ -12,7 +15,7 @@ class Index extends Component {
 
     render() {
         return (
-            <div className="index_36kr">aaa
+            <div className="index_36kr">
                 <div className="pagewrap">
                 <div className="mainlib_flex_wapper">
                     <div className="ab-index-exp mainlib">
@@ -31,12 +34,12 @@ class Index extends Component {
                         <div className="plan-image plan-lazyload-box">
                         </div>
                     </div>
-                    {/* <RealTime></RealTime> */}
+                    <RealTime></RealTime>
                     <div className="plan-image plan-lazyload-box"></div>
                     <div className="plan-image plan-lazyload-box"></div>
-                    {/* <HotArticle></HotArticle> */}
+                    <HotArticle></HotArticle>
                     <div className="plan-image plan-lazyload-box"></div>
-                    {/* <BiggieWord></BiggieWord> */}
+                    <BiggieWord></BiggieWord>
                     </div>
                 </div>
                 </div>
