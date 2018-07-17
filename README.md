@@ -84,6 +84,12 @@
 2.  {} -> 进去的都是原来的东西
     `onClick = {this.fn}`
 
+3.  插入 html 标签。 在标签添加属性 `dangerouslySetInnerHTML={__html: html_code}` -> 防止 xxs 攻击
+
+    ```
+      <div dangerouslySetInnerHTML={__html: xxx}></div>
+    ```
+
 ## 组件事件
 
 1.  事件名首字母大写
@@ -181,3 +187,52 @@ class Index extends Component {
 
 export default Index;
 ```
+
+### react-router-dom
+
+- 安装 `react-router-dom`
+
+  - 由于生产模式需要使用，因此安装命令为：`npm i react-router react-router-dom -S`
+
+- 引入
+
+`import {BrowserRouter,Router,Switch,Route} from 'react-router-dom'`
+
+- BrowserRouter: 最外面，声明一个路由块。-> 路由的包裹
+
+  <!-- - Router: 路由对象，用作路由声明 -->
+
+- Switch: 选择声明
+
+- Route: 路由声明->注册一个路由项
+
+- 使用
+
+  - 路由选择 -> 路由注册
+
+    ```javascript
+    <BrowserRouter>
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Index} />
+          <Route path="/detail/:id/" component={Detail} />
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
+    ```
+
+    - 注：BrowserRouter 下面只能有一个子元素
+
+  - 路由跳转：Link
+
+    - 也是从 `react-router-dom` 中引入
+
+    ```
+      <Link to=`/detail/${data.id}`>
+        XXX
+      </Link>
+    ```
+
+  - 路由参数获取：`this.props.match.params.xxx`

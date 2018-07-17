@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import common from '../../common/common'
 
@@ -13,7 +14,7 @@ class ArticleListItem extends Component {
         <li>
             <div className="am-cf inner_li inner_li_abtest">
             <span className="undefined mark h5_mark">{data.tag}</span>
-            {/* <Link to={`/detail/${data.id}/`}> */}
+            <Link to={`/detail/${data.id}/`}>
                 <div className="img_box list-img-loaded">
                 <div>
                     <img alt="{data.title}" className="load-img fade" src={`http://localhost:8090/img?src=${data.src}`} />
@@ -24,7 +25,7 @@ class ArticleListItem extends Component {
                 <h3>{data.title}</h3>
                 <div className="abstract">{data.summary}</div>
                 </div>
-            {/* </Link> */}
+            </Link>
             <div className="info">
                 <div className="info-list info-list-abtest">
                 <div className="user-info">
