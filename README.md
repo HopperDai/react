@@ -181,3 +181,87 @@ class Index extends Component {
 
 export default Index;
 ```
+
+## [redux](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
+
+- 适用场景：多交互、多数据源
+
+- 解决：1.代码结构 2.组件间通信
+
+- 设计思想：1. app 是一个状态机，视图和状态一一对应；2. 所有的状态保存在一个对象中
+
+### redux 概念和 API
+
+- 安装 redux : `npm i redux -S` 和 `npm i react-redux -S`
+
+- reducer：计算 state 函数，纯函数，只计算 state
+
+- store：保存数据的容器，整个应用只有一个 store
+
+  - 引入：`import { createStore } from 'redux'`
+
+  - 创建：`const store = createStore(reducer);`
+
+  - 方法：
+
+    - `store.dispatch()`
+
+    - `store.getState()`
+
+    - `store.subscribe()`
+
+* action：view 触发产生 action
+
+  - 触发：dispatch()
+
+* state：状态。时点的数据集合
+
+  - 获取：getState()
+
+* 工作流程
+
+  ![](./imgs/redux_flow.jpg)
+
+- 使用
+
+  1.  定义 reducer
+
+  2.  创建 store , 同时监听 render
+
+  3.  给 view 的 action 绑定 dispatch
+
+  4.  监听 render , 实现 view 的自动渲染
+
+- [配合 react-redux 使用](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html)
+
+  - Provider: 在跟组件外面包一层 `<Provider></Provider>` , App 的所有子组件都可以获取到 state
+
+    - 引入：`import { Provider } from 'react-redux'`
+
+    - 在 index.js 使用
+
+    - 绑定 store 属性
+
+  - connect：生成容器组件 `import { connect } from 'react-redux'`
+
+    - mapStateToProps：外部 -> UI 组件
+
+    - mapDispatchToProps：UI 组件 -> 外部
+
+    ```javascript
+    // 生成容器组件
+    const counter = connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(Counter);
+    ```
+
+- 组件通信的理解：redux 和 react-redux。操作 store
+
+  - redux 引入 store , 储存状态 , 绑定在最外层的 Provider(从 react-redux 引入) 上 , 供所有的子组件使用 state
+
+  - 我们生成的普通组件为 UI 组件 , 通过 connect(从 react-redux 引入) 配置成容器组件 , 把容器组件放置在具体的位置。其中，最关键的两个配置，可供容器组件去读取和修改 store 的状态。store 的工作流程可以参考上图：action -> dispatch -> store(reducer) -> newstate -> view 通过 store 去获取 newstate
+
+    - mapStateToProps
+
+    - mapDispatchToProps
