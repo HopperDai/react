@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Counter from './components/counter'
 import Result from './components/result'
+import Header from './components/header'
+
+import './styles/base.css'
 
 // action
 const increaseAction = { type: 'increase' }
@@ -33,6 +36,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header/>
         <ResultCmp />
         <CountCmp />
       </div>

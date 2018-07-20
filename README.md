@@ -188,7 +188,6 @@ class Index extends Component {
 export default Index;
 ```
 
-<<<<<<< HEAD
 ## [redux](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
 
 - 适用场景：多交互、多数据源
@@ -272,7 +271,6 @@ export default Index;
     - mapStateToProps
 
     - mapDispatchToProps
-=======
 ### react-router-dom
 
 - 安装 `react-router-dom`
@@ -321,4 +319,3 @@ export default Index;
     ```
 
   - 路由参数获取：`this.props.match.params.xxx`
->>>>>>> 7928d7fe3cb54f60fa10b5b576f75761891643c5
